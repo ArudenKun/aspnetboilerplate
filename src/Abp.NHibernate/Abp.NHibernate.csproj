@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props" />
   <Import Project="..\..\configureawait.props" />
-  
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Abp.NHibernate</AssemblyName>
     <PackageId>Abp.NHibernate</PackageId>
@@ -19,14 +18,11 @@
     <RootNamespace>Abp</RootNamespace>
     <Description>Abp.NHibernate</Description>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Abp\Abp.csproj" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="FluentNHibernate" Version="3.4.1" />
+    <PackageReference Include="FluentNHibernate" Version="3.5.0" />
     <PackageReference Include="NHibernate" Version="5.7.0" />
   </ItemGroup>
-
 </Project>

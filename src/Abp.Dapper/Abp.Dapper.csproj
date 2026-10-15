@@ -1,10 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props" />
   <Import Project="..\..\configureawait.props" />
-  
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>Abp.Dapper</AssemblyName>
     <PackageId>Abp.Dapper</PackageId>
     <PackageTags>asp.net;asp.net mvc;boilerplate;application framework;web framework;framework;domain driven design;Dapper;ORM</PackageTags>
@@ -15,7 +13,6 @@
     <RootNamespace>Abp</RootNamespace>
     <Description>Abp.Dapper</Description>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Abp\Abp.csproj" />
     <PackageReference Include="Dapper" Version="2.1.79" />
@@ -23,14 +20,11 @@
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     <PackageReference Include="Slapper.AutoMapper" Version="2.0.5" />
   </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' != 'net461' and '$(TargetFramework)' != 'net461'">
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.300" />
     <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
   </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net461' and '$(OSTYPE)' != 'linux-gnu' and '$(OSTYPE)' != 'darwin18'">
     <PackageReference Include="Oracle.ManagedDataAccess" version="19.28.0" targetFramework="net461" />
   </ItemGroup>
-
 </Project>

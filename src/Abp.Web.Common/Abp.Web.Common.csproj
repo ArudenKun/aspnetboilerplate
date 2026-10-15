@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props" />
   <Import Project="..\..\configureawait.props" />
-  
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Abp.Web.Common</AssemblyName>
     <PackageId>Abp.Web.Common</PackageId>
@@ -19,17 +18,16 @@
     <RootNamespace>Abp</RootNamespace>
     <Description>Abp.Web.Common</Description>
   </PropertyGroup>
-
   <ItemGroup>
-    <EmbeddedResource Include="Web\Localization\AbpWebXmlSource\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <EmbeddedResource
+      Include="Web\Localization\AbpWebXmlSource\*.xml"
+      Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)"
+    />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="NUglify" Version="1.22.0" />
+    <PackageReference Include="NUglify" Version="1.23.4" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Abp\Abp.csproj" />
   </ItemGroup>
-
 </Project>
