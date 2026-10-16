@@ -29,7 +29,7 @@ using Abp;
 [assembly: InternalsVisibleTo("Abp.Web.Resources")]
 [assembly: InternalsVisibleTo("Abp.Specifications")]
 [assembly: InternalsVisibleTo("Abp.Dapper")]
-[assembly: InternalsVisibleTo("Abp.LinqToDB")]
+[assembly: InternalsVisibleTo("Abp.RepoDb")]
 
 [assembly: InternalsVisibleTo("Abp.Tests")]
 [assembly: InternalsVisibleTo("Abp.EntityFramework.Tests")]

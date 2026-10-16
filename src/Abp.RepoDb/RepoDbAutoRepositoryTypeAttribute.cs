@@ -1,5 +1,6 @@
 ﻿using System;
 using Abp.Domain.Repositories;
+using JetBrains.Annotations;
 
 namespace Abp.RepoDb;
 
