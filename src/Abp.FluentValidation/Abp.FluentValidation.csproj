@@ -23,6 +23,6 @@
     <ProjectReference Include="..\Abp\Abp.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.12.0" />
+    <PackageReference Include="FluentValidation" Version="[11.12.0]" />
   </ItemGroup>
 </Project>

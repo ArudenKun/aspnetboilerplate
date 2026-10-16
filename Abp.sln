@@ -111,6 +111,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Zero.NHibernate", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Castle.Serilog", "src\Abp.Castle.Serilog\Abp.Castle.Serilog.csproj", "{EBD9EEF4-FEE4-4CEB-96B5-6CD269843B49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.RepoDb", "src\Abp.RepoDb\Abp.RepoDb.csproj", "{8AD27F89-3AE7-4353-9F3B-4BB8A25B26FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -297,6 +299,10 @@ Global
 		{EBD9EEF4-FEE4-4CEB-96B5-6CD269843B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBD9EEF4-FEE4-4CEB-96B5-6CD269843B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBD9EEF4-FEE4-4CEB-96B5-6CD269843B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD27F89-3AE7-4353-9F3B-4BB8A25B26FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD27F89-3AE7-4353-9F3B-4BB8A25B26FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD27F89-3AE7-4353-9F3B-4BB8A25B26FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD27F89-3AE7-4353-9F3B-4BB8A25B26FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -349,6 +355,7 @@ Global
 		{AA91194A-1C58-4F5F-B46A-EF43FDC0B284} = {DFF0464B-5402-4DD6-86F5-2AEC1163B232}
 		{ECE8FB7B-D873-4CC6-9399-C42E7C12BEAC} = {DFF0464B-5402-4DD6-86F5-2AEC1163B232}
 		{EBD9EEF4-FEE4-4CEB-96B5-6CD269843B49} = {DFF0464B-5402-4DD6-86F5-2AEC1163B232}
+		{8AD27F89-3AE7-4353-9F3B-4BB8A25B26FC} = {DFF0464B-5402-4DD6-86F5-2AEC1163B232}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A1CB38E-F77D-4A40-B3A9-9A70C3F3BC6D}

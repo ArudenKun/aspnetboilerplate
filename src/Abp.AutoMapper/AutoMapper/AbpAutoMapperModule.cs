@@ -6,6 +6,7 @@ using Abp.Modules;
 using Abp.Reflection;
 using AutoMapper;
 using Castle.MicroKernel.Registration;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Abp.AutoMapper;
 
@@ -44,7 +45,7 @@ public class AbpAutoMapperModule : AbpModule
             }
         };
 
-        var config = new MapperConfiguration(configurer);
+        var config = new MapperConfiguration(configurer, NullLoggerFactory.Instance);
         IocManager.IocContainer.Register(
             Component.For<IConfigurationProvider>().Instance(config).LifestyleSingleton()
         );
@@ -61,13 +62,12 @@ public class AbpAutoMapperModule : AbpModule
     private void FindAndAutoMapTypes(IMapperConfigurationExpression configuration)
     {
         var types = _typeFinder.Find(type =>
-            {
-                var typeInfo = type.GetTypeInfo();
-                return typeInfo.IsDefined(typeof(AutoMapAttribute)) ||
-                       typeInfo.IsDefined(typeof(AutoMapFromAttribute)) ||
-                       typeInfo.IsDefined(typeof(AutoMapToAttribute));
-            }
-        );
+        {
+            var typeInfo = type.GetTypeInfo();
+            return typeInfo.IsDefined(typeof(AutoMapAttribute))
+                || typeInfo.IsDefined(typeof(AutoMapFromAttribute))
+                || typeInfo.IsDefined(typeof(AutoMapToAttribute));
+        });
 
         Logger.DebugFormat("Found {0} classes define auto mapping attributes", types.Length);
 
@@ -82,7 +82,13 @@ public class AbpAutoMapperModule : AbpModule
     {
         var localizationContext = IocManager.Resolve<ILocalizationContext>();
 
-        configuration.CreateMap<ILocalizableString, string>().ConvertUsing(ls => ls == null ? null : ls.Localize(localizationContext));
-        configuration.CreateMap<LocalizableString, string>().ConvertUsing(ls => ls == null ? null : localizationContext.LocalizationManager.GetString(ls));
+        configuration
+            .CreateMap<ILocalizableString, string>()
+            .ConvertUsing(ls => ls == null ? null : ls.Localize(localizationContext));
+        configuration
+            .CreateMap<LocalizableString, string>()
+            .ConvertUsing(ls =>
+                ls == null ? null : localizationContext.LocalizationManager.GetString(ls)
+            );
     }
 }

@@ -15,7 +15,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abp\Abp.csproj" />
-    <PackageReference Include="Dapper" Version="2.1.79" />
+    <PackageReference Include="Dapper" Version="2.1.89" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     <PackageReference Include="Slapper.AutoMapper" Version="2.0.5" />
@@ -25,6 +25,10 @@
     <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net461' and '$(OSTYPE)' != 'linux-gnu' and '$(OSTYPE)' != 'darwin18'">
-    <PackageReference Include="Oracle.ManagedDataAccess" version="19.28.0" targetFramework="net461" />
+    <PackageReference
+      Include="Oracle.ManagedDataAccess"
+      version="19.28.0"
+      targetFramework="net461"
+    />
   </ItemGroup>
 </Project>
