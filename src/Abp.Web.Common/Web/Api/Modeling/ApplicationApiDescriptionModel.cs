@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Abp.Collections.Extensions;
 
 namespace Abp.Web.Api.Modeling
@@ -30,7 +29,11 @@ namespace Abp.Web.Api.Modeling
             return Modules.GetOrAdd(name, () => new ModuleApiDescriptionModel(name));
         }
 
-        public ApplicationApiDescriptionModel CreateSubModel(string[] modules = null, string[] controllers = null, string[] actions = null)
+        public ApplicationApiDescriptionModel CreateSubModel(
+            string[] modules = null,
+            string[] controllers = null,
+            string[] actions = null
+        )
         {
             var subModel = new ApplicationApiDescriptionModel();
 

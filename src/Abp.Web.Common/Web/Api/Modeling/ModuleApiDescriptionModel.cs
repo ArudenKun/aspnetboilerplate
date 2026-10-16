@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using Abp.Collections.Extensions;
 
@@ -12,10 +11,7 @@ namespace Abp.Web.Api.Modeling
 
         public IDictionary<string, ControllerApiDescriptionModel> Controllers { get; }
 
-        private ModuleApiDescriptionModel()
-        {
-            
-        }
+        private ModuleApiDescriptionModel() { }
 
         public ModuleApiDescriptionModel(string name)
         {
@@ -28,7 +24,9 @@ namespace Abp.Web.Api.Modeling
         {
             if (Controllers.ContainsKey(controller.Name))
             {
-                throw new AbpException($"There is already a controller with name: {controller.Name} in module: {Name}");
+                throw new AbpException(
+                    $"There is already a controller with name: {controller.Name} in module: {Name}"
+                );
             }
 
             return Controllers[controller.Name] = controller;
@@ -38,7 +36,7 @@ namespace Abp.Web.Api.Modeling
         {
             return Controllers.GetOrAdd(name, () => new ControllerApiDescriptionModel(name));
         }
-        
+
         public ModuleApiDescriptionModel CreateSubModel(string[] controllers, string[] actions)
         {
             var subModel = new ModuleApiDescriptionModel(Name);

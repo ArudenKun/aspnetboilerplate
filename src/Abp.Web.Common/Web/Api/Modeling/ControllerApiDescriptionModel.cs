@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Abp.Web.Api.Modeling
@@ -9,12 +8,9 @@ namespace Abp.Web.Api.Modeling
     {
         public string Name { get; }
 
-        public IDictionary<string,  ActionApiDescriptionModel> Actions { get; }
+        public IDictionary<string, ActionApiDescriptionModel> Actions { get; }
 
-        private ControllerApiDescriptionModel()
-        {
-
-        }
+        private ControllerApiDescriptionModel() { }
 
         public ControllerApiDescriptionModel(string name)
         {
@@ -29,7 +25,7 @@ namespace Abp.Web.Api.Modeling
             {
                 throw new AbpException(
                     $"Can not add more than one action with same name to the same controller. Controller: {Name}, Action: {action.Name}."
-                    );
+                );
             }
 
             return Actions[action.Name] = action;

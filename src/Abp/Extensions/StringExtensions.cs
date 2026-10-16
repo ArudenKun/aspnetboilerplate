@@ -24,7 +24,11 @@ namespace Abp.Extensions
         /// <summary>
         /// Adds a char to end of given string if it does not ends with the char.
         /// </summary>
-        public static string EnsureEndsWith(this string str, char c, StringComparison comparisonType)
+        public static string EnsureEndsWith(
+            this string str,
+            char c,
+            StringComparison comparisonType
+        )
         {
             if (str == null)
             {
@@ -42,7 +46,12 @@ namespace Abp.Extensions
         /// <summary>
         /// Adds a char to end of given string if it does not ends with the char.
         /// </summary>
-        public static string EnsureEndsWith(this string str, char c, bool ignoreCase, CultureInfo culture)
+        public static string EnsureEndsWith(
+            this string str,
+            char c,
+            bool ignoreCase,
+            CultureInfo culture
+        )
         {
             if (str == null)
             {
@@ -68,7 +77,11 @@ namespace Abp.Extensions
         /// <summary>
         /// Adds a char to beginning of given string if it does not starts with the char.
         /// </summary>
-        public static string EnsureStartsWith(this string str, char c, StringComparison comparisonType)
+        public static string EnsureStartsWith(
+            this string str,
+            char c,
+            StringComparison comparisonType
+        )
         {
             if (str == null)
             {
@@ -86,7 +99,12 @@ namespace Abp.Extensions
         /// <summary>
         /// Adds a char to beginning of given string if it does not starts with the char.
         /// </summary>
-        public static string EnsureStartsWith(this string str, char c, bool ignoreCase, CultureInfo culture)
+        public static string EnsureStartsWith(
+            this string str,
+            char c,
+            bool ignoreCase,
+            CultureInfo culture
+        )
         {
             if (str == null)
             {
@@ -133,7 +151,9 @@ namespace Abp.Extensions
 
             if (str.Length < len)
             {
-                throw new ArgumentException("len argument can not be bigger than given string's length!");
+                throw new ArgumentException(
+                    "len argument can not be bigger than given string's length!"
+                );
             }
 
             return str.Substring(0, len);
@@ -261,7 +281,9 @@ namespace Abp.Extensions
 
             if (str.Length < len)
             {
-                throw new ArgumentException("len argument can not be bigger than given string's length!");
+                throw new ArgumentException(
+                    "len argument can not be bigger than given string's length!"
+                );
             }
 
             return str.Substring(str.Length - len, len);
@@ -280,7 +302,7 @@ namespace Abp.Extensions
         /// </summary>
         public static string[] Split(this string str, string separator, StringSplitOptions options)
         {
-            return str.Split(new[] { separator }, options);
+            return str.Split([separator], options);
         }
 
         /// <summary>
@@ -317,7 +339,8 @@ namespace Abp.Extensions
                 return invariantCulture ? str.ToLowerInvariant() : str.ToLower();
             }
 
-            return (invariantCulture ? char.ToLowerInvariant(str[0]) : char.ToLower(str[0])) + str.Substring(1);
+            return (invariantCulture ? char.ToLowerInvariant(str[0]) : char.ToLower(str[0]))
+                + str.Substring(1);
         }
 
         /// <summary>
@@ -357,7 +380,14 @@ namespace Abp.Extensions
             return Regex.Replace(
                 str,
                 "[a-z][A-Z]",
-                m => m.Value[0] + " " + (invariantCulture ? char.ToLowerInvariant(m.Value[1]) : char.ToLower(m.Value[1]))
+                m =>
+                    m.Value[0]
+                    + " "
+                    + (
+                        invariantCulture
+                            ? char.ToLowerInvariant(m.Value[1])
+                            : char.ToLower(m.Value[1])
+                    )
             );
         }
 
@@ -374,7 +404,11 @@ namespace Abp.Extensions
                 return str;
             }
 
-            return Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower(m.Value[1], culture));
+            return Regex.Replace(
+                str,
+                "[a-z][A-Z]",
+                m => m.Value[0] + " " + char.ToLower(m.Value[1], culture)
+            );
         }
 
         /// <summary>
@@ -444,10 +478,11 @@ namespace Abp.Extensions
 
             if (str.Length == 1)
             {
-                return invariantCulture ? str.ToUpperInvariant(): str.ToUpper();
+                return invariantCulture ? str.ToUpperInvariant() : str.ToUpper();
             }
 
-            return (invariantCulture ? char.ToUpperInvariant(str[0]) : char.ToUpper(str[0])) + str.Substring(1);
+            return (invariantCulture ? char.ToUpperInvariant(str[0]) : char.ToUpper(str[0]))
+                + str.Substring(1);
         }
 
         /// <summary>

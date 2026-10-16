@@ -10,9 +10,11 @@ namespace Abp.Web.Api.ProxyScripting.Generators
 {
     public static class ProxyScriptingJsFuncHelper
     {
-        private const string ValidJsVariableNameChars = "abcdefghijklmnopqrstuxwvyzABCDEFGHIJKLMNOPQRSTUXWVYZ0123456789_";
+        private const string ValidJsVariableNameChars =
+            "abcdefghijklmnopqrstuxwvyzABCDEFGHIJKLMNOPQRSTUXWVYZ0123456789_";
 
-        private static readonly HashSet<string> ReservedWords = new HashSet<string> {
+        private static readonly HashSet<string> ReservedWords = new HashSet<string>
+        {
             "abstract",
             "else",
             "instanceof",
@@ -72,7 +74,7 @@ namespace Abp.Web.Api.ProxyScripting.Generators
             "double",
             "in",
             "static",
-            "with"
+            "with",
         };
 
         public static string NormalizeJsVariableName(string name, string additionalChars = "")
@@ -113,11 +115,16 @@ namespace Abp.Web.Api.ProxyScripting.Generators
         public static string GetParamNameInJsFunc(ParameterApiDescriptionModel parameterInfo)
         {
             return parameterInfo.Name == parameterInfo.NameOnMethod
-                       ? NormalizeJsVariableName(parameterInfo.Name.ToCamelCase(), ".")
-                       : NormalizeJsVariableName(parameterInfo.NameOnMethod.ToCamelCase()) + "." + NormalizeJsVariableName(parameterInfo.Name.ToCamelCase(), ".");
+                ? NormalizeJsVariableName(parameterInfo.Name.ToCamelCase(), ".")
+                : NormalizeJsVariableName(parameterInfo.NameOnMethod.ToCamelCase())
+                    + "."
+                    + NormalizeJsVariableName(parameterInfo.Name.ToCamelCase(), ".");
         }
 
-        public static string CreateJsObjectLiteral(ParameterApiDescriptionModel[] parameters, int indent = 0)
+        public static string CreateJsObjectLiteral(
+            ParameterApiDescriptionModel[] parameters,
+            int indent = 0
+        )
         {
             var sb = new StringBuilder();
 
@@ -125,7 +132,9 @@ namespace Abp.Web.Api.ProxyScripting.Generators
 
             foreach (var prm in parameters)
             {
-                sb.AppendLine($"{new string(' ', indent)}  '{prm.Name}': {GetParamNameInJsFunc(prm)},");
+                sb.AppendLine(
+                    $"{new string(' ', indent)}  '{prm.Name}': {GetParamNameInJsFunc(prm)},"
+                );
             }
 
             sb.Append(new string(' ', indent) + "}");
@@ -133,11 +142,19 @@ namespace Abp.Web.Api.ProxyScripting.Generators
             return sb.ToString();
         }
 
-        public static string GenerateJsFuncParameterList(ActionApiDescriptionModel action, string ajaxParametersName)
+        public static string GenerateJsFuncParameterList(
+            ActionApiDescriptionModel action,
+            string ajaxParametersName
+        )
         {
-            var methodParamNames = action.Parameters.Select(p => p.NameOnMethod).Distinct().ToList();
+            var methodParamNames = action
+                .Parameters.Select(p => p.NameOnMethod)
+                .Distinct()
+                .ToList();
             methodParamNames.Add(ajaxParametersName);
-            return methodParamNames.Select(prmName => NormalizeJsVariableName(prmName.ToCamelCase())).JoinAsString(", ");
+            return methodParamNames
+                .Select(prmName => NormalizeJsVariableName(prmName.ToCamelCase()))
+                .JoinAsString(", ");
         }
     }
 }
